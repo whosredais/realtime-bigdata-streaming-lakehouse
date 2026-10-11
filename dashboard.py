@@ -122,10 +122,14 @@ airflow_up = check_port("localhost", 8082) or check_http("http://localhost:8082"
 kafka_up = check_port("localhost", 29092) or check_port("localhost", 9092)
 
 col_s1, col_s2, col_s3, col_s4 = st.columns(4)
-col_s1.markdown(f"**Kafka Broker** : {'<span class=\"status-badge-ok\">ONLINE</span>' if kafka_up else '<span class=\"status-badge-ko\">OFFLINE</span>'}", unsafe_allow_html=True)
-col_s2.markdown(f"**Spark Master** : {'<span class=\"status-badge-ok\">ONLINE</span>' if spark_up else '<span class=\"status-badge-ko\">OFFLINE</span>'}", unsafe_allow_html=True)
-col_s3.markdown(f"**HDFS Cluster** : {'<span class=\"status-badge-ok\">ONLINE (3 Workers)</span>' if hdfs_up else '<span class=\"status-badge-ko\">OFFLINE</span>'}", unsafe_allow_html=True)
-col_s4.markdown(f"**Airflow Scheduler** : {'<span class=\"status-badge-ok\">ONLINE</span>' if airflow_up else '<span class=\"status-badge-ko\">OFFLINE</span>'}", unsafe_allow_html=True)
+badge_ok = '<span class="status-badge-ok">ONLINE</span>'
+badge_ko = '<span class="status-badge-ko">OFFLINE</span>'
+hdfs_badge = '<span class="status-badge-ok">ONLINE (3 Workers)</span>' if hdfs_up else badge_ko
+
+col_s1.markdown(f"**Kafka Broker** : {badge_ok if kafka_up else badge_ko}", unsafe_allow_html=True)
+col_s2.markdown(f"**Spark Master** : {badge_ok if spark_up else badge_ko}", unsafe_allow_html=True)
+col_s3.markdown(f"**HDFS Cluster** : {hdfs_badge}", unsafe_allow_html=True)
+col_s4.markdown(f"**Airflow Scheduler** : {badge_ok if airflow_up else badge_ko}", unsafe_allow_html=True)
 
 st.markdown("<br>", unsafe_allow_html=True)
 
