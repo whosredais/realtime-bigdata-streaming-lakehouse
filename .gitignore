@@ -28,7 +28,9 @@ logs/
 *.log
 *.pid
 
-# Temporary & Old Files
+# Temporary, Personal & Draft Files
+LINKEDIN_POST.md
+*linkedin*
 docker-compose.yaml
 *.bak
 *.tmp
