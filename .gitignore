@@ -1,0 +1,38 @@
+# Python & Virtual Environments
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+env/
+venv/
+ENV/
+build/
+dist/
+*.egg-info/
+
+# Pytest & Testing Cache
+.pytest_cache/
+.coverage
+htmlcov/
+
+# IDEs & Editors
+.idea/
+.vscode/
+*.swp
+*.swo
+
+# Airflow, Spark & Pipeline execution logs
+logs/
+!logs/.gitkeep
+*.log
+*.pid
+
+# Temporary & Old Files
+docker-compose.yaml
+*.bak
+*.tmp
+
+# OS generated files
+.DS_Store
+Thumbs.db

@@ -1,0 +1,9 @@
+FROM apache/airflow:2.7.3
+USER root
+RUN curl -L -o openjdk.tar.gz https://github.com/adoptium/temurin11-binaries/releases/download/jdk-11.0.22%2B7/OpenJDK11U-jre_x64_linux_hotspot_11.0.22_7.tar.gz \
+    && tar -xzf openjdk.tar.gz -C /opt \
+    && rm openjdk.tar.gz \
+    && ln -s /opt/jdk-11* /opt/java
+ENV JAVA_HOME=/opt/java
+ENV PATH="${JAVA_HOME}/bin:${PATH}"
+USER airflow
